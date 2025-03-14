@@ -18,25 +18,22 @@ def start(message):
 @CHAT_BOT.message_handler(commands=["gif"])
 def random_gif(message):
     print("Function 'random_gif' was called")
-    random_index = random.randint(0, len(GIF_LIST)-1)
+    random_index = random.randint(0, len(GIF_LIST) - 1)
     gif = GIF_LIST[random_index]
-    CHAT_BOT.send_message(
-        message.chat.id, gif
-    )
+    CHAT_BOT.send_message(message.chat.id, gif)
 
 
 @CHAT_BOT.message_handler(commands=["flip_coin"])
 def flip_coin(message):
     print("Function 'flip_coin' was called")
     # 0 - tail, 1 - head
-    heads_or_tails = random.randint(0, 1)
     global waiting_for_answer
     waiting_for_answer = True
     CHAT_BOT.send_message(
         chat_id=message.chat.id,
         text="Choose head or tail",
     )
-    
+
     coin_result(message)
 
 
@@ -98,7 +95,11 @@ def start_predictor(message):
 @CHAT_BOT.message_handler(func=lambda message: waiting_for_answer)
 def give_prediction(message):
     list = [
-        "Так", "Ні", "Певно так!", "Звичайно ж ні!", "Можливо, але не сьогодні"
+        "Так",
+        "Ні",
+        "Певно так!",
+        "Звичайно ж ні!",
+        "Можливо, але не сьогодні",
     ]
     a = random.choice(list)
     CHAT_BOT.send_message(
@@ -140,4 +141,4 @@ def handle_message(message):
 print("Bot is starting...")
 CHAT_BOT.polling(non_stop=True, interval=0)
 print("Bot was stoped")
-# TODO try stickers`1`,add git repo
+# TODO try stickers`1`
