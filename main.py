@@ -1,9 +1,14 @@
 import random
 import telebot
+import os
+from dotenv import load_dotenv
 
-from bot_config import GIF_LIST, HELLO_LIST, INFO_LIST
+from bot_config import GIF_LIST, HELLO_LIST, INFO_LIST, STICK_ID, QUOTES
 
-CHAT_BOT = telebot.TeleBot("7943218729:AAEwCvtk3xdbiINKhJEktcTW0d5aTSPsbD0")
+
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+CHAT_BOT = telebot.TeleBot(API_KEY)
 waiting_for_answer = False
 
 
@@ -110,6 +115,20 @@ def give_prediction(message):
     waiting_for_answer = False
 
 
+@CHAT_BOT.message_handler(commands=["stickers"])
+def sticker(message):
+    # stick = open('stickers/sticker.webp', 'rb')
+
+    CHAT_BOT.send_sticker(message.chat.id, STICK_ID)
+
+
+@CHAT_BOT.message_handler(commands=["quotes"])
+def send_random_quote(message):
+    print("Function 'send_random_quote' was called")
+    quote = random.choice(QUOTES)
+    CHAT_BOT.send_message(message.chat.id, quote)
+
+
 @CHAT_BOT.message_handler(content_types=["text"])
 def handle_message(message):
     print("Function 'handle_message' was called")
@@ -141,4 +160,4 @@ def handle_message(message):
 print("Bot is starting...")
 CHAT_BOT.polling(non_stop=True, interval=0)
 print("Bot was stoped")
-# TODO try stickers`1`
+# TODO create pull request

@@ -31,5 +31,16 @@ INFO_LIST = [
 GIF_LIST = [
     "https://i.giphy.com/BVSMbtX5ZRGqwnCQnX.webp",
     "https://i.giphy.com/VIKa3CjZDCoymNcBY5.webp",
-    "https://i.giphy.com/yoJC2GnSClbPOkV0eA.webp"
+    "https://i.giphy.com/yoJC2GnSClbPOkV0eA.webp",
+]
+STICK_ID = (
+    "CAACAgIAAxkBAAEOHnhn2t1YzQlp3j5ViiNtwJ5J7xDeUwACqWQAA-_QSLPn5jo7MorXNgQ"
+)
+
+QUOTES = [
+    "Ваше обмеження — це лише ваша уява.",
+    "Не чекайте. Час ніколи не буде 'правильним'.",
+    "Успіх - це сума маленьких зусиль, повторюваних щодня.",
+    "Перемога - це не випадковість, це результат тяжкої праці.",
+    "Кожна невдача - це крок до успіху.",
 ]
